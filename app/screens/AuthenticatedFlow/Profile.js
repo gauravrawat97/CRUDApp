@@ -121,6 +121,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     marginBottom: 10,
+    color: 'black',
   },
   formContainer: {
     marginBottom: 20,

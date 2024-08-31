@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text, Button, StyleSheet, Alert} from 'react-native';
+import {View, Text, Button, StyleSheet, Alert, FlatList} from 'react-native';
 import {API_ENDPOINT} from '../../config/BaseUrls';
 //Here the list of registered user from firebase are shown. I have used firebase function here to fetch detail from firebase auth. I have used firebase-admin here. Please replace the url with your own function if you want to use it.
 const UserList = () => {
@@ -31,11 +31,14 @@ const UserList = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Total Users List</Text>
-      {users.map(user => (
-        <Text style={styles.userItem} key={user.uid}>
-          {user.email || 'No Email'}
-        </Text>
-      ))}
+      <FlatList
+        data={users}
+        renderItem={({item}) => (
+          <Text style={styles.userItem} key={item?.uid}>
+            {item?.email || 'No Email'}
+          </Text>
+        )}
+      />
     </View>
   );
 };
